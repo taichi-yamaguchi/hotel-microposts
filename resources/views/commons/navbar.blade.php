@@ -14,17 +14,16 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 @if (Auth::check())
                    {{-- 投稿ページへのリンク --}}
-                   <a class="dropdown-item" href="#">投稿</a>
+                   <li class="dropdown-item">{!! link_to_route('microposts.create', '投稿', [], ['class' => 'nav-link']) !!}</li>
                     {{-- ログアウトへのリンク --}}
                 　 <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
-                        
+                    {{--ユーザー情報変更へのリンク　--}}
+                    <li class="dropdown-item">{!! link_to_route('users.edit', 'ユーザー設定', ['user' => Auth::id()], ['class' => 'nav-link']) !!}</li>    
                 @else
                     {{-- ユーザ登録ページへのリンク --}}
                     <li class="dropdown-item">{!! link_to_route('signup.get', '登録', [], ['class' => 'nav-link']) !!}</li>
                     {{-- ログインページへのリンク --}}
                     <li class="dropdown-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
-                    {{--ユーザー情報変更へのリンク　--}}
-                    <li class="dropdown-item">{!! link_to_route('uesrs.edit', 'ユーザー設定', ['user' => $user->id], ['class' => 'nav-link']) !!}</li>
                 @endif
             </ul>
           </li>

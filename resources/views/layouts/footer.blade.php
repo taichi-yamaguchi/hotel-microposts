@@ -21,9 +21,16 @@
             </li>
             {{-- マイページ --}}
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                      <i class="fas fa-user"></i>
-                </a>
+                @if (Auth::check())
+                    <a href="{{ route('users.show', ['user' => Auth::id()]) }}" class="nav-link {{ Request::routeIs('users.show') ? 'active' : '' }}">
+                          <i class="fas fa-user"></i>
+                    </a>
+                @else
+                    <a href="{{ route('login')}}">
+                          <i class="fas fa-user"></i>
+                    </a>
+                @endif
+                
             </li>
             
         </ul>

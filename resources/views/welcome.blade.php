@@ -1,2 +1,2 @@
  @include('layouts.app')
- @include('microposts.microposts')
+ {{--@include('microposts.microposts')--}}

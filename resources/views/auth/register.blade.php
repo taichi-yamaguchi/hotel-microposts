@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+
+<diV class="box">
+
+    @if (count($errors) > 0)
+        <ul class="alert alert-danger" role="alert">
+            @foreach ($errors->all() as $error)
+                <li class="ml-4">{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <div class="text-center">
         <h1>ユーザー登録</h1>
     </div>
@@ -33,4 +44,5 @@
             {!! Form::close() !!}
         </div>
     </div>
+</div>
 @endsection
