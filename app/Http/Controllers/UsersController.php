@@ -60,6 +60,7 @@ class UsersController extends Controller
         
         //ユーザーの投稿を取得して降順で取得
         $microposts = $user->microposts()->orderBy('created_at', 'desc')->paginate(10);
+    
         
         //それらをユーザー詳細で表示
         return view('users.show', [

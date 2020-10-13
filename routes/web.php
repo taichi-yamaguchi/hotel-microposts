@@ -25,7 +25,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['edit', 'update', 'show', 'destroy']]);
     
-    Route::resource('microposts', 'MicropostsController', ['only' => ['create','store', 'destroy']]);
+    Route::resource('microposts', 'MicropostsController', ['only' => ['create','store', 'destroy','show']]);
 });
 
 Route::get('confirmation', 'UsersController@confirm')->name('user.confirm');

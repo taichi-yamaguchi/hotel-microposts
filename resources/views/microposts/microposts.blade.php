@@ -1,27 +1,77 @@
-@foreach($microposts as $micropost)
-  <div class="post">
-    <a href="#" class="text-secondary">
-      <div class="card mx-auto" style="width: 18rem;">
-        <img class="card-img-top" width="100%" height="180" src="{{$micropost->image1}}" alt="投稿画像">
-        <img class="card-img-top" width="100%" height="180" src="{{$micropost->image2}}" alt="投稿画像">
-        <img class="card-img-top" width="100%" height="180" src="{{$micropost->image3}}" alt="投稿画像">
-        <img class="card-img-top" width="100%" height="180" src="{{$micropost->image4}}" alt="投稿画像">
-        <div class="card-body">
-          <h4 class="card-title">{{$micropost->hotel_name}}</h4>
-        </div>
-        <div class="card-body mt-1">
-          <p class="card-text">{{$micropost->prefecture}}</p>
-        </div>
-        <div class="card-body mt-1">
-          <p class="card-text">{{$micropost->content}}</p>
-        </div>
-        <div class="card-body mt-1">
-          <p class="card-text">{{$micropost->price}}</p>
-        </div>
-        <div class="card-body mt-1">
-          <star-rating v-bind:rating="{{ $micropost->evaluate }}">
-        </div>
-      </div>
-    </a>
+<div class="container">
+  <div class="list-star row">
+        @foreach($microposts as $micropost)
+          <div class="post col-sm-4">
+            <a href="{{ route('microposts.show', ['micropost' => $micropost->id]) }}" class="text-secondary">
+              <div class="card" style="width: 100%;">
+                @if($micropost->getImagecount()==1)
+                  <div class="img1">
+                    <img class="card-img-top"  src="{{$micropost->image1}}" alt="投稿画像">
+                  </div>
+                @elseif($micropost->getImagecount()==2)
+                  <div class="img-box">
+                    <div class="img2">
+                      <img class="card-img-top" src="{{$micropost->image1}}" alt="投稿画像">
+                    </div>
+                    <div class="img2">
+                      <img class="card-img-top" src="{{$micropost->image2}}" alt="投稿画像">
+                    </div>
+                  </div>
+                @elseif($micropost->getImagecount()==3)
+                  <div class="img-box">
+                    <div class="img3">
+                      <img class="card-img-half"src="{{$micropost->image1}}" alt="投稿画像">
+                    </div>
+                    <div class="img3">
+                      <img class="card-img-half"  src="{{$micropost->image2}}" alt="投稿画像">
+                    </div>
+                  </div>
+                  <div class="img-row-3">
+                    <img class="card-img-half"  src="{{$micropost->image3}}" alt="投稿画像">
+                  </div>
+                @elseif($micropost->getImagecount()==4)
+                  <div class="img-box">
+                    <div class="img4">
+                      <img class="card-img-half" src="{{$micropost->image1}}" alt="投稿画像">
+                    </div>
+                    <div class="img4">
+                      <img class="card-img-half"  src="{{$micropost->image2}}" alt="投稿画像">
+                    </div>
+                  </div>
+                  <div class="img-box">
+                    <div class="img4">
+                      <img class="card-img-half"   src="{{$micropost->image3}}" alt="投稿画像">
+                    </div>
+                    <div class="img4">
+                      <img class="card-img-half"  src="{{$micropost->image4}}" alt="投稿画像">
+                    </div>
+                  </div>
+                @endif
+              </div>
+              <div class="card text-box" style="width: 100%;">
+                <div class="card-body">
+                  <h4 class="card-title">{{$micropost->hotel_name}}</h4>
+                  <div class="location-box">
+                    <div class="itag">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="prefecture">
+                      <p class="card-text">{{$micropost->prefecture}}</p>
+                    </div>
+                  </div>
+                  <p class="card-text">{{mb_strimwidth("$micropost->content",0,70,"...")}}</p>
+                  <p class="card-text"><span>一泊あたり</span><br>¥{{$micropost->price}}</p>
+                  <star-rating star-size="20" show-rating="false" read-only="true" v-bind:rating="{{ $micropost->evaluate }}"></star-rating>
+                </div>
+              </div>
+            </a>
+          </div>
+        @endforeach
+          <!--Vueを呼ぶJSを読み込む -->
+          <!--assetでpublicディレクトリのパスを返す -->
+        <script src="{{ asset('js/app.js') }}" async></script>
   </div>
-@endforeach
+</div>
+
+  
+  

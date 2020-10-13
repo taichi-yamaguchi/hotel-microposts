@@ -2,10 +2,9 @@
 
 @section('content')
 
-@include('users.card')
+<!--@include('users.card')-->
 
 @include('microposts.microposts')
-
 
 
 @endsection

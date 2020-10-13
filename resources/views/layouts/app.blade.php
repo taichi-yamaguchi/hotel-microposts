@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="{{ asset('css/confirm.css') }}">
         <link rel="stylesheet" href="{{ asset('css/register.css') }}">
         <link rel="stylesheet" href="{{ asset('css/form.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/micropostshow.css') }}">
          
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     </head>

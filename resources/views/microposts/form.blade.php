@@ -50,7 +50,7 @@
           <label for="star">評価</label> 
         　<star-rating :star-size="20" v-model="rating" :show-rating="false" ></star-rating>
         　 <!--//選択した星の値をhiddenで送信する。「:value="rating"」で値を取得する -->
-        　<input type="hidden" name="evaluate" :value="rating"/ id="star">
+        　<input type="hidden" name="evaluate" :value="rating">
         </div>
          <!--Vueを呼ぶJSを読み込む -->
          <!--assetでpublicディレクトリのパスを返す -->
