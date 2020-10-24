@@ -58,8 +58,12 @@ class UsersController extends Controller
         //idの値でユーザーを検索して取得
         $user = User::findOrfail($id);
         
+        //モデルの件数をダウンロード
+        $user->loadRelationshipCounts();
+        
+        
         //ユーザーの投稿を取得して降順で取得
-        $microposts = $user->microposts()->orderBy('created_at', 'desc')->paginate(10);
+        $microposts = $user->microposts()->orderBy('created_at', 'desc')->paginate(12);
     
         
         //それらをユーザー詳細で表示
@@ -68,6 +72,53 @@ class UsersController extends Controller
             'microposts' => $microposts,
             ]);
     }
+    
+    public function followings($id){
+        //idの値でユーザーを検索して取得
+        $user = User::findOrFail($id);
+        
+        //モデルの件数をダウンロード
+        $user->loadRelationshipCounts();
+        
+        $followings = $user->followings()->get();
+        
+        //viewでそれらを表示
+        return view('users.followcount',[
+            'user' => $user,
+            'users' => $followings,
+            ]);
+    }
+    
+    public function followers($id){
+        //idの値でユーザーを検索して取得
+        $user = User::findOrFail($id);
+        
+        //モデルの件数をダウンロード
+        $user->loadRelationshipCounts();
+        
+        $followers = $user->followers()->get();
+        
+        //viewでそれらを表示
+        return view('users.followercount',[
+            'user' => $user,
+            'users' => $followers,
+            ]);
+    }
+    
+    public function favorites($id)
+    {
+        $user = User::findOrFail($id);
+        
+        $user->loadRelationshipCounts();
+        
+        $favorites = $user->favorites()->paginate(12);
+        
+        return view('users.favorites',[
+            'user' => $user,
+            'microposts' => $favorites,
+            ]);
+    }
+   
     
     
 }

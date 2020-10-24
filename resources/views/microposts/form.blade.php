@@ -22,29 +22,32 @@
             </div>
         </div>
         <div class="form-group">
-             {!! Form::file('image2') !!}
-        </div>
-         <div class="form-group">
-             {!! Form::file('image3') !!}
-        </div>
-         <div class="form-group">
-             {!! Form::file('image4') !!}
+            {!! Form::file('image2') !!}
         </div>
         <div class="form-group">
-             {!! Form::label('text','ホテル名',['class' => 'control-label', 'rows' => '2']) !!}
+            {!! Form::file('image3') !!}
+        </div>
+        <div class="form-group">
+            {!! Form::file('image4') !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('text','ホテル名',['class' => 'control-label', 'rows' => '2']) !!}
             {!! Form::text('hotel_name',null,['class' => 'form-control', 'rows' => '2']) !!}
         </div>
          <div class="form-group">
-             {!! Form::label('textarea','コメント(255文字まで)',['class' => 'control-label', 'rows' => '2']) !!}
+            {!! Form::label('textarea','コメント(255文字まで)',['class' => 'control-label', 'rows' => '2']) !!}
             {!! Form::textarea('content',null,['class' => 'form-control', 'rows' => '2']) !!}
         </div>
         <div class="form-group">
-             {!! Form::label('text','都道府県',['class' => 'control-label', 'rows' => '2']) !!}
-            {!! Form::text('prefecture',null,['class' => 'form-control', 'rows' => '2']) !!}
+            {!! Form::label('text','都道府県',['class' => 'control-label', 'rows' => '2']) !!}
+            {!! Form::text('prefecture',null,['class' => 'form-control col-sm-3', 'rows' => '2']) !!}
         </div>
         <div class="form-group">
-             {!! Form::label('text','一泊あたりの料金',['class' => 'control-label', 'rows' => '2']) !!}
-            {!! Form::text('price',null,['class' => 'form-control', 'rows' => '2']) !!}
+            {!! Form::label('text','一泊あたりの料金',['class' => 'control-label', 'rows' => '2']) !!}
+            <div class="form-row">
+                {!! Form::text('price',null,['class' => 'form-control col-sm-3', 'rows' => '2']) !!}
+                <div class="col d-flex align-items-end">円</div>
+            </div>
         </div>
         <div id="star">
           <label for="star">評価</label> 

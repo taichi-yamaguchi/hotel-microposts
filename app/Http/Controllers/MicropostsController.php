@@ -6,11 +6,44 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\User;
 use App\Micropost;
+use Intervention\Image\Facades\Image;
+
 
 class MicropostsController extends Controller
 {   
-    public function index()
-    {
+    public function index(){
+     
+     $microposts = Micropost::orderBy('created_at', 'desc')->paginate(12);
+     
+     return view('microposts.index',[
+      'microposts' => $microposts,
+      ]);
+     
+    }
+    
+    public function followindex(){
+     $data = [];
+     if (\Auth::check()) {
+         // 認証済みユーザ（閲覧者）を取得
+         $user = \Auth::user();
+         
+          //モデルの件数をダウンロード
+        $user->loadRelationshipCounts();
+        
+         
+         
+         // ユーザとフォロー中ユーザの投稿の一覧を作成日時の降順で取得
+         $microposts = $user->feed_microposts()->orderBy('created_at', 'desc')->paginate(12);
+         
+
+         $data = [
+             'user' => $user,
+             'microposts' => $microposts,
+         ];
+      }
+
+        // ビューでそれらを表示
+        return view('users.show', $data);
     }
     
     public function create()
@@ -36,16 +69,30 @@ class MicropostsController extends Controller
         {
              $image1 = $request->file('image1');
              
-             $path1 = Storage::disk('s3')->putFile('myprefix', $image1, 'public');
+             $resizeImage1= Image::make($image1)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->encode('png');
+                
+             $path1 = Storage::disk('s3')->put('myprefix/'.uniqid().'.png',(string)$resizeImage1, 'public');
              
+             
+
              /* ファイルパスから参照するURLを生成する */
              $url1 = Storage::disk('s3')->url($path1);
+             dd($path1);
         }
          if ($request->image2 != null)
         {
              $image2 = $request->file('image2');
              
-             $path2 = Storage::disk('s3')->putFile('myprefix', $image2, 'public');
+              
+             $resizeImage2= Image::make($image1)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+             
+             $path2 = Storage::disk('s3')->putFile('myprefix', $resizeImage2, 'public');
              
              /* ファイルパスから参照するURLを生成する */
              $url2 = Storage::disk('s3')->url($path2);
@@ -59,7 +106,12 @@ class MicropostsController extends Controller
         {
              $image3 = $request->file('image3');
              
-             $path3 = Storage::disk('s3')->putFile('myprefix', $image3, 'public');
+             $resizeImage3= Image::make($image1)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+             
+             $path3 = Storage::disk('s3')->putFile('myprefix', $resizeImage3, 'public');
              
              /* ファイルパスから参照するURLを生成する */
              $url3 = Storage::disk('s3')->url($path3);
@@ -73,7 +125,12 @@ class MicropostsController extends Controller
         {
              $image4 = $request->file('image4');
              
-             $path4 = Storage::disk('s3')->putFile('myprefix', $image4, 'public');
+             $resizeImage4= Image::make($image1)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+             
+             $path4 = Storage::disk('s3')->putFile('myprefix', $resizeImage4, 'public');
              
              /* ファイルパスから参照するURLを生成する */
              $url4 = Storage::disk('s3')->url($path4);
@@ -102,10 +159,12 @@ class MicropostsController extends Controller
         
         
        //トップページへリダイレクト
-        return redirect('/');
+        return redirect()->route('microposts.index');
     }
     
     public function show($id){
+     
+      
      
        //idの値で投稿を検索して取得
         $micropost = Micropost::findOrfail($id);
@@ -116,6 +175,37 @@ class MicropostsController extends Controller
         
        
     }
+    
+    public function destroy($id){
+     
+        //idの値で投稿を検索して取得
+        $micropost = Micropost::findOrfail($id);
+        
+        //メッセージを消去
+        if (\Auth::id() === $micropost->user_id){
+        $micropost->delete();
+        }
+       
+        
+        //mypageにリダイレクト
+        return redirect()->route('users.show', ['user' => \Auth::id()]);
+    }
+    
+    public function followcount($id){
+        //idの値でユーザーを検索して取得
+        $user = User::findOrfail($id);
+        
+        //モデルの件数をダウンロード
+        $user->loadRelationshipCounts();
+        
+        return view('micropost.followmicroposts',[
+         'user' => $user,
+         ]);
+     
+    }
+     
+    
+    
     
     
 }

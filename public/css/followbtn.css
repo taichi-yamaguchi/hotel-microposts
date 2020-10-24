@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+/* followボタン */
+.user-follow {
+    background-color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    color: #007bff;
+    font-size: 12px;
+    padding: 3px 10px;
+}
+.user-unfollow {
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 10px;
+}
+.user-unfollow:hover {
+    opacity: 0.7;
+}
+.user-follow:hover {
+    opacity: 0.7;
+}
+
+
+/* follow-countページ */
+.count-page {
+    padding-top: 80px;
+}
+.count-title {
+    margin-bottom: 5px;
+    text-align: center;
+    border-bottom: 1px solid #C0C0C0;
+}
+.follow-user-index {
+    width: 40%;
+    margin: 10px auto 0;
+}
+.follow-user-one {
+    color: black;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.follow-user-name {
+    margin-left: 10px;
+}
+.follow-user-btn {
+    margin-right: 10px;
+}
+
+/* フォロー一覧から詳細ページ */
+.follow-user-one:hover {
+    color: black;
+    text-decoration: none;
+    background-color: #DAECFF;
+}

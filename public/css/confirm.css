@@ -1,5 +1,36 @@
 @charset "utf-8";
-.box
-{
-    padding-top: 60px;
+.confirm-page{
+    padding-top: 80px;
+    text-align: center;
+}
+
+.confirm-btn {
+    width: 40%;
+    margin: 30px auto 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.confirm-delete-user {
+    color: #fff;
+    background-color: #FF0033;
+    padding: 5px 10px;
+    border: 1px solid #FF0033;
+    border-radius: 5px;
+}
+.confirm-delete-user:hover {
+    background-color: #CC0029;
+    border: 1px solid #CC0029;
+}
+
+.confirm-back-user {
+    display: block;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.confirm-back-user:hover {
+    text-decoration: none;
+    opacity: 0.7;
 }

@@ -1,9 +1,52 @@
 @charset "utf-8";
-.container {
-    padding: 60px 0;
+
+.mpshow-box {
+    padding: 70px 0 40px;
 }
-.field-box {
+
+/* 投稿したユーザー情報*/
+.micropost-user {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mpshow-username {
+    margin-left: 5px;
+}
+.mpshow-user-link {
+    color: black;
+}
+.mpshow-user-link:hover {
+    text-decoration: none;
+    color: #999;
+}
+
+
+
+
+/* 投稿詳細 */
+.mpshow-post {
     margin-top: 10px;
+}
+/* 投稿画像*/
+.image-box {
+    margin: 0 auto;
+    width: 65%;
+}
+.micropostshow-img{
+    height: 400px;
+    object-fit: contain;
+    width: 100%;
+}
+.micropostshow-img1 .carousel{
+    width:100%;
+}
+
+/* 投稿テキスト*/
+.field-box {
+    margin: 10px 0 0 60px;
 }
 .field {
     width: 100%;
@@ -19,12 +62,29 @@ span {
     margin-right: 3px;
 }
 
-.micropostshow-img{
-    height: 400px;
-    object-fit: contain;
-    width: 100%;
+/*投稿消去*/
+.trush{
+    display: block;
+    text-align: right;
+    color: #AAA;
+}
+.fa-trash-alt {
+    color: #999;
+}
+.fa-trash-alt:hover {
+    color: black;
 }
 
-.micropostshow-img1 .carousel{
-    width:100%;
+/* お気に入りボタン */
+.mpshow-favorite {
+    text-align: right;
+}
+
+@media (max-width: 767px){
+    .field-box{
+        margin: 10px 0 0  10px;
+    }
+    .image-box {
+        width: 75%;
+    }
 }

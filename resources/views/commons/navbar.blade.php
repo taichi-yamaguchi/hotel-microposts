@@ -1,6 +1,10 @@
 <header class="fixed-top">
     <nav class="navbar navbar-expand-sm navbar-light bg-dark">
-      <a class="navbar-brand text-white" href="/">HotelTrip</a>
+      @if(Auth::check())
+        <a href = "{{ route('microposts.index') }}" class="navbar-brand text-white">HotelTrip</a>
+      @else
+        <a href = "/" class="navbar-brand text-white">HotelTrip</a>
+      @endif
       <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -13,17 +17,17 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 @if (Auth::check())
-                   {{-- 投稿ページへのリンク --}}
-                   <li class="dropdown-item">{!! link_to_route('microposts.create', '投稿', [], ['class' => 'nav-link']) !!}</li>
-                    {{-- ログアウトへのリンク --}}
-                　 <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
-                    {{--ユーザー情報変更へのリンク　--}}
-                    <li class="dropdown-item">{!! link_to_route('users.edit', 'ユーザー設定', ['user' => Auth::id()], ['class' => 'nav-link']) !!}</li>    
+                  {{-- 投稿ページへのリンク --}}
+                  <li class="dropdown-item">{!! link_to_route('microposts.create', '投稿', [], ['class' => 'nav-link']) !!}</li>
+                  {{-- ログアウトへのリンク --}}
+                　<li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
+                  {{--ユーザー情報変更へのリンク　--}}
+                  <li class="dropdown-item">{!! link_to_route('users.edit', 'ユーザー設定', ['user' => Auth::id()], ['class' => 'nav-link']) !!}</li>    
                 @else
-                    {{-- ユーザ登録ページへのリンク --}}
-                    <li class="dropdown-item">{!! link_to_route('signup.get', '登録', [], ['class' => 'nav-link']) !!}</li>
-                    {{-- ログインページへのリンク --}}
-                    <li class="dropdown-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
+                  {{-- ユーザ登録ページへのリンク --}}
+                  <li class="dropdown-item">{!! link_to_route('signup.get', '登録', [], ['class' => 'nav-link']) !!}</li>
+                  {{-- ログインページへのリンク --}}
+                  <li class="dropdown-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
                 @endif
             </ul>
           </li>
