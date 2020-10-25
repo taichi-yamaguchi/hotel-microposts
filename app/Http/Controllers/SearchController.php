@@ -15,7 +15,7 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-        
+                
        
         $query = Micropost::query();
         
@@ -27,7 +27,7 @@ class SearchController extends Controller
                 ->orWhere('content', 'like', '%'.$keyword.'%')
                 ->orWhere('prefecture', 'like', '%'.$keyword.'%')
                 ->orWhere('price', 'like', '%'.$keyword.'%')
-                ->orWhere('evaluate', 'like', '%'.$keyword.'%')->get();
+                ->orWhere('evaluate', 'like', '%'.$keyword.'%');
                 
             
             //ユーザを1ページにつき10件ずつ表示させます
