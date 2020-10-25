@@ -10,10 +10,9 @@
     </div>
     {!! Form::submit('検索', ['class' => 'btn btn-primary btn-block']) !!}
   {!! Form::close() !!}
-  @if($datas != '')
   <div class="container search-page">
     <div class="list-star row">
-          @foreach($datas as $data)
+          @forelse($datas as $data)
             <div class="post col-sm-4">
               <a href="{{ route('microposts.show', ['micropost' => $data->id]) }}" class="text-secondary">
                 <div class="card" style="width: 100%;">
@@ -92,16 +91,16 @@
                 </div>
               </a>
             </div>
-          @endforeach
+             @empty
             <!--Vueを呼ぶJSを読み込む -->
             <!--assetでpublicディレクトリのパスを返す -->
           <script src="{{ asset('js/app.js') }}" async></script>
     </div>
   </div>
-  @else
+ 
    <p class="mt-3">{{ $keyword }}に一致する検索結果はありませんでした。</p>
    
-   @endif
+  @endforelse
 
 </div>
 
