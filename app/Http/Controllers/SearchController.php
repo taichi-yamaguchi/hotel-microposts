@@ -15,6 +15,12 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
+        
+          // バリデーション
+        $request->validate
+        ([
+            'keyword' => 'required',
+         ]);
         $query = Micropost::query();
         
         $keyword = $request->input('keyword');
