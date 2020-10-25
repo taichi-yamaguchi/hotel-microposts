@@ -70,32 +70,34 @@ class MicropostsController extends Controller
              $image1 = $request->file('image1');
              
              $resizeImage1= Image::make($image1)
-                ->resize(300, null, function ($constraint) {
+                ->resize(600, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })->encode('png');
                 
-             $path1 = Storage::disk('s3')->put('myprefix/'.uniqid().'.png',(string)$resizeImage1, 'public');
              
-             
-
-             /* ファイルパスから参照するURLを生成する */
+             $path1 = 'myprefix/'. uniqid(). '.png';
+             Storage::disk('s3')->put($path1, (string)$resizeImage1, 'public');
              $url1 = Storage::disk('s3')->url($path1);
-             dd($path1);
+              
+
+
+             
         }
          if ($request->image2 != null)
         {
              $image2 = $request->file('image2');
              
               
-             $resizeImage2= Image::make($image1)
-                ->resize(300, null, function ($constraint) {
+             $resizeImage2= Image::make($image2)
+                ->resize(600, null, function ($constraint) {
                     $constraint->aspectRatio();
-                });
+                })->encode('png');
+                
              
-             $path2 = Storage::disk('s3')->putFile('myprefix', $resizeImage2, 'public');
-             
-             /* ファイルパスから参照するURLを生成する */
+             $path2 = 'myprefix/'. uniqid(). '.png';
+             Storage::disk('s3')->put($path2, (string)$resizeImage2, 'public');
              $url2 = Storage::disk('s3')->url($path2);
+              
         }
         else
         {
@@ -106,15 +108,16 @@ class MicropostsController extends Controller
         {
              $image3 = $request->file('image3');
              
-             $resizeImage3= Image::make($image1)
-                ->resize(300, null, function ($constraint) {
+             $resizeImage3= Image::make($image3)
+                ->resize(600, null, function ($constraint) {
                     $constraint->aspectRatio();
-                });
+                })->encode('png');
+                
              
-             $path3 = Storage::disk('s3')->putFile('myprefix', $resizeImage3, 'public');
-             
-             /* ファイルパスから参照するURLを生成する */
+             $path3 = 'myprefix/'. uniqid(). '.png';
+             Storage::disk('s3')->put($path3, (string)$resizeImage3, 'public');
              $url3 = Storage::disk('s3')->url($path3);
+              
         }
         else
         {
@@ -125,15 +128,16 @@ class MicropostsController extends Controller
         {
              $image4 = $request->file('image4');
              
-             $resizeImage4= Image::make($image1)
-                ->resize(300, null, function ($constraint) {
+             $resizeImage4= Image::make($image4)
+                ->resize(600, null, function ($constraint) {
                     $constraint->aspectRatio();
-                });
+                })->encode('png');
+                
              
-             $path4 = Storage::disk('s3')->putFile('myprefix', $resizeImage4, 'public');
-             
-             /* ファイルパスから参照するURLを生成する */
+             $path4 = 'myprefix/'. uniqid(). '.png';
+             Storage::disk('s3')->put($path4, (string)$resizeImage4, 'public');
              $url4 = Storage::disk('s3')->url($path4);
+              
         }
         else
         {
