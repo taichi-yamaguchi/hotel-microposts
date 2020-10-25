@@ -16,11 +16,7 @@ class SearchController extends Controller
     public function index(Request $request)
     {
         
-          // バリデーション
-        $request->validate
-        ([
-            'keyword' => 'required',
-         ]);
+       
         $query = Micropost::query();
         
         $keyword = $request->input('keyword');
@@ -42,15 +38,22 @@ class SearchController extends Controller
                 'datas' => $datas,
                 'keyword' => $keyword
             ]);
+        
         }
+        
         else{
-             //ユーザを1ページにつき10件ずつ表示させます
-            $datas = $query->paginate(10);
+            
+            //ユーザを1ページにつき10件ずつ表示させます
+            $datas = $query->paginate(12);
+            
     
             return view('search.searchindex',[
-                'datas' => $datas
+                'datas' => $datas,
+                'keyword' => $keyword
             ]);
+            
         }
+        
     }
     
     public function search(){
