@@ -10,6 +10,7 @@
     </div>
     {!! Form::submit('検索', ['class' => 'btn btn-primary btn-block']) !!}
   {!! Form::close() !!}
+  @if($datas != '')
   <div class="container search-page">
     <div class="list-star row">
           @foreach($datas as $data)
@@ -96,8 +97,11 @@
             <!--assetでpublicディレクトリのパスを返す -->
           <script src="{{ asset('js/app.js') }}" async></script>
     </div>
-  
   </div>
+  @else
+   <p class="mt-3">{{ $keyword }}に一致する検索結果はありませんでした。</p>
+   
+   @endif
 
 </div>
 
