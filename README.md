@@ -1,15 +1,15 @@
 # Share BluePrint
 ## 使用技術
 
-php 7.2
-intervention/image 2.5
-laravel/framework 6.18.35
-laravelcollective/html 6.0
-league/flysystem-aws-s3-v3 1.0
-ext-gd
-bootstrap 4.0.0
-jquery 3.2
-vue 2.5.17
+php 7.2<br>
+intervention/image 2.5<br>
+laravel/framework 6.18.35<br>
+laravelcollective/html 6.0<br>
+league/flysystem-aws-s3-v3 1.0<br>
+ext-gd<br>
+bootstrap 4.0.0<br>
+jquery 3.2<br>
+vue 2.5.17<br>
 
 
 ## 概要
