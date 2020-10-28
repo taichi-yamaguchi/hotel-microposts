@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     </head>
     <body>
-      <header>
+      <header class="welcome-nav">
         @include('commons.navbar')
       </header>
         <main>
@@ -39,7 +39,7 @@
           </div>
           </main>
           <div class="fixed-bottom">
-            <footer>
+            <footer class="welcome-footnav">
              <nav class="navbar navbar-expand-sm navbar-light bg-dark">
                 <div class="sign">
                   <div>
