@@ -2,7 +2,7 @@
 
 .welcome-img-box{
     width: 100%;
-    max-height: 710px;
+    height: 710px;
 }
 
 .welcome-img{
@@ -27,6 +27,9 @@
 @media (max-width: 767px){
       .sign{
             margin: 10px auto 0;
-            width: 90%;
+            width: 100%;
          }
+      .introduce{
+          font-size: 15px;
+      }
 }
