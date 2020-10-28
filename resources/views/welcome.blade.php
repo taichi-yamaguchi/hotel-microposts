@@ -36,11 +36,6 @@
                 <img  class="welcome-img" src="/images/PPP24719.jpeg" alt="Third slide">
               </div>
             </div>
-            <ol class="carousel-indicators">
-              <li data-target="#img-top" data-slide-to="0" class="active"></li>
-              <li data-target="#img-top" data-slide-to="1"></li>
-              <li data-target="#img-top" data-slide-to="2"></li>
-            </ol>
           </div>
           </main>
           <div class="fixed-bottom">
